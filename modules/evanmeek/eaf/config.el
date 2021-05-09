@@ -3,6 +3,9 @@
 
 (use-package! eaf
   :commands (eaf-open eaf-search-it eaf-open-browser eaf-open-bookmark eaf-open-browser-with-history)
+  :init
+  (setq browse-url-browser-function 'eaf-open-browser)
+  (defalias 'browse-web #'eaf-open-browser)
   :custom
   (eaf-find-alternate-file-in-dired t)
   (eaf-proxy-type "socks5")
@@ -13,7 +16,6 @@
   (use-package! deferred)
   (use-package! epc)
   (require 'eaf-evil)
-
   (define-key key-translation-map (kbd "SPC")
     (lambda (prompt)
       (if (derived-mode-p 'eaf-mode)
@@ -25,7 +27,6 @@
             ("image-viewer" (kbd eaf-evil-leader-key))
             (_  (kbd "SPC")))
         (kbd "SPC"))))
-  (defalias 'browse-web #'eaf-open-browser)
   ;; (setq eaf-browser-default-search-engine "google")
   (setq eaf-browser-default-search-engine "duckduckgo")
   (eaf-setq eaf-browse-blank-page-url "https://google.com")
