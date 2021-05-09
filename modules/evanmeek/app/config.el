@@ -14,7 +14,8 @@
   (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend)
   (setq telega-completing-read-function 'ivy-completing-read)
   (telega-notifications-mode t)
-  (telega-mode-line-mode 1))
+  (telega-mode-line-mode 1)
+  (define-key telega-msg-button-map "k" nil))
 
 (defun toggle-telega ()
   "切換telega"
@@ -32,8 +33,8 @@
 (use-package! rime
   :config
   (setq default-input-method "rime")
-  ;; (setq rime-user-data-dir "~/.emacs.d/var/rime")
-  ;; (setq rime-share-data-dir "~/.emacs.d/var/rime")
+  (setq rime-user-data-dir (concat doom-etc-dir "rime" "/"))
+  (setq rime-share-data-dir (concat doom-etc-dir "rime" "/"))
   (setq rime-posframe-properties
         (list :background-color "#333333"
               :foreground-color "#dcdccc"
