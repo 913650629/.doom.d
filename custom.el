@@ -1,1 +1,1 @@
-(put 'customize-themes 'disabled nil)
+(put 'narrow-to-region 'disabled nil)

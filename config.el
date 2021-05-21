@@ -21,13 +21,14 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Sarasa Mono SC" :size 20 :style "Regular")
-      doom-variable-pitch-font (font-spec :family "Sarasa Mono SC" :size 20 :style "Regular")
-      doom-big-font (font-spec :family "Sarasa Mono SC" :size 20 :style "Regular"))
-(set-fontset-font t 'han (font-spec
-                          :name "Sarasa Mono SC"
-                          :style "Regular"
-                          :size 18))
+(setq doom-font (font-spec :name "VictorMono Nerd Font Mono" :size 20)
+      doom-variable-pitch-font (font-spec :name "VictorMono Nerd Font Mono" :size 20  )
+      doom-big-font (font-spec :name "VictorMono Nerd Font Mono" :size 20 ))
+
+(set-fontset-font t 'han (font-spec :name "Sarasa Mono SC" :size 20))
+
+;; (set-fontset-font t 'han (font-spec :name "Sarasa Mono CL" :size 20))
+;; (set-fontset-font t 'han (font-spec :name "Sarasa Mono CL" :size 20))
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -38,8 +39,11 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
-
+(setq display-line-numbers-type 'nil)
+(setq +mu4e-backend 'mbsync)
+(setq company-idle-delay 0.1)
+(setq twittering-allow-insecure-server-cert t)
+;; (setq amx-prompt-string "M-x ^")
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -57,4 +61,13 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(setq +mu4e-backend 'mbsync)
+(load! "autoload.el")
+(load! "keymap.el")
+
+
+;; elfeed
+(after! elfeed
+  (setq elfeed-search-filter "@1-month-ago +unread")
+  (setq elfeed-feeds
+        '("https://sachachua.com/blog/category/monthly/feed"
+          "https://emacs-china.org/latest.rss")))

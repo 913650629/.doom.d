@@ -30,6 +30,7 @@
       (:prefix ("a" . "app")
        (:prefix ("t" . "Telega")
         :desc "Telega Switch Chat" "c" #'telega-chat-with)))
+
 (use-package! rime
   :config
   (setq default-input-method "rime")
@@ -41,6 +42,22 @@
               ;; :font evan/en-font-name
               :internal-border-width 10))
   (setq default-input-method "rime"
-        rime-show-candidate 'posframe)
-  ;; (setq rime-disable-predicates '(rime-predicate-evil-mode-p))
-  )
+        rime-show-candidate 'posframe))
+  ;; (setq rime-disable-predicates '(rime-predicate-evil-mode-p)))
+(use-package shengci
+  :commands (shengci-capture-word-and-save
+             shengci-show-recorded-word
+             shengci-show-memorized-word))
+
+
+(use-package! bongo
+  :commands (bong-init-all)
+  :custom
+  (bongo-header-line-mode nil)
+  (bongo-mode-line-indicator-mode nil)
+  (bongo-global-lastfm-mode nil)
+  (bongo-mode-line-icon-size 10))
+
+(map! :leader
+      (:prefix ("a" . "app")
+       :desc "Bongo-Init歌单" "B" #'bongo-init-all))
